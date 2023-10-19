@@ -1,4 +1,4 @@
-# T1-Rob-tica-m-vel
+# T1-Robotica movel
 
 
 Trabalho em grupos de 3 estudantes, excepcionalmente 2.  Não pode ser feito individualmente, haverá fator de 0,7 aplicado à nota se fizer individual.
