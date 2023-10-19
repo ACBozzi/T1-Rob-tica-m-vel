@@ -100,11 +100,11 @@ k, k_opt, k_values, variance_values = Calculate_Best_K_OPT()
 plt.figure(figsize=(10,6))
 plt.plot(k_values,variance_values,color='red', linestyle='dashed', marker='o',
          markerfacecolor='orange', markersize=10)
-plt.title('Varianza vs. K')
+plt.title('variação vs. K')
 plt.xlabel('K')
 plt.axvline(658, 0, 0.95,label='k= '+ str(k_opt) +' -> Var='+str(0.99),c='r')
 plt.legend()
-plt.ylabel('Varianza')
+plt.ylabel('variação')
 
 def Calculate_Best_K():
     k = 0
@@ -127,3 +127,33 @@ x_train_pca.shape
 
 """KNN"""
 
+#treino
+knn = KNeighborsClassifier()
+knn.fit(x_train_pca, total_label)
+
+#teste
+y_pred_knn = knn.predict(x_test_pca)
+
+knn_score = accuracy_score(label_test, y_pred_knn)
+knn_score
+
+confusion_matrix(label_test,y_pred_knn)
+
+classification_report(label_test,y_pred_knn)
+
+"""SVM"""
+
+svc = svm.SVC()
+svc.fit(x_train_pca, total_label)  #demora demais (32 minutos cara)
+
+## teste
+y_pred_svm = svc.predict(x_test_pca)
+svc_score = accuracy_score(label_test, y_pred_svm)
+svc_score
+
+confusion_matrix(label_test,y_pred_svm)
+
+classification_report(label_test,y_pred_svm)
+
+print("KNN : ", knn_score)
+print("SVM : ", svc_score)
